@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+
+
+
+    <style>
+        body {
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .game {
+            width: 560px;
+
+            text-align: center;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1 {
+            color: rgb(41, 6, 243);
+        }
+
+        h2 {
+            color: red;
+        }
+
+        button {
+            border: 2px solid red;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+        <h1>Dice Game</h1>
+        <h2>Rules:</h2>
+        <ul>
+            <li>You will roll up to 10 dice, one at a time.</li>
+            <li>If you roll a 1 --- End Game!</li>
+            <li>If you roll 2 or 3, you can roll again!</li>
+            <li>If you roll 4, you'll lose 1 gold coin.</li>
+            <li>If you roll a 5, you win 5 gold coins and you get to roll again.</li>
+            <li>If you roll a 6, you win 6 gold coins and you get to roll again.</li>
+        </ul>
+        <button type="button" onclick="rollDice()">Roll Dice!</button>
+    </div>
+
+
+
+
+
+    <script>
+        function rollDice() {
+            let goldCoins = 0;
+
+            for (let i = 0; i < 10; i++) {
+                
+                const roll = Math.floor(Math.random() * 6) + 1;
+                alert('You rolled: ' + roll);
+
+                if (roll === 1) {
+                    break;
+                } else if (roll === 4) {
+                    if (goldCoins >= 1) {
+                        goldCoins -= 1;
+                        alert('You just lost 1 gold coin! \nSo far you have total of: ' + goldCoins);
+                    }
+
+                } else if (roll === 5) {
+                    goldCoins += 5;
+                    alert('You won 5 gold coins! \nSo far you have total of: ' + goldCoins);
+
+                } else if (roll === 6) {
+                    goldCoins += 6;
+                    alert('You won 6 gold coins! \nSo far you have total of: ' + goldCoins);
+                }
+
+            }
+            alert('You have total of: ' + goldCoins);
+
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
